@@ -18,11 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        // decoration: const BoxDecoration(
-        //     image: DecorationImage(
-        //   image: NetworkImage(''),
-        //    fit: BoxFit.cover
-        // )),
+        decoration: const BoxDecoration(
+            image: DecorationImage(image: NetworkImage(''), fit: BoxFit.cover)),
         child: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
