@@ -1,3 +1,4 @@
+import 'package:final_project_vscode/auth/home_screen.dart';
 import 'package:final_project_vscode/auth/menu.dart';
 // import 'package:final_project_vscode/screen/home_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,7 +54,7 @@ class _SignInState extends State<SignIn> {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Menu(),
+                        builder: (context) => const HomeScreen(),
                       ),
                       (route) => false);
                 })

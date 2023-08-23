@@ -1,4 +1,5 @@
-import 'package:final_project_vscode/widget/prod_card.dart';
+// import 'package:final_project_vscode/widget/prod_card.dart';
+import 'package:final_project_vscode/widget/product_card.dart';
 // import 'package:final_project_vscode/widget/product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +57,7 @@ class _MenuState extends State<Menu> {
             // crossAxisSpacing: 2,
             crossAxisCount: 2,
             childAspectRatio: 10 / 14,
-            children: List.generate(7, (index) => const ProCard()),
+            children: List.generate(7, (index) => const ProductCard()),
           ))
         ],
       ),

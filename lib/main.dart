@@ -1,4 +1,4 @@
-import 'package:final_project_vscode/screen/home_screen.dart';
+import 'package:final_project_vscode/screen/start_screen.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: StartScreen(),
     );
   }
 }
