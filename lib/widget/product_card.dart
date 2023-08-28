@@ -1,10 +1,12 @@
 // import 'dart:math';
 
 // import 'package:flutter/cupertino.dart';
+import 'package:final_project_vscode/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  ProductCard({super.key, required this.product});
+  ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,9 @@ class ProductCard extends StatelessWidget {
                   padding: const EdgeInsets.all(9.0),
                   child: Container(
                     width: double.infinity,
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 164, 180, 194),
-                        borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 164, 180, 194),
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10),
                             bottomLeft: Radius.circular(10),
@@ -34,7 +36,7 @@ class ProductCard extends StatelessWidget {
                             fit: BoxFit.cover,
                             image: NetworkImage(
                                 // 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcG6hIFchtVsO8snzqUylQm3RjmkyfVQMhfMVVztqd&s'))),
-                                "https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee.webp",
+                                product.image,
                                 scale: 1.0))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -68,8 +70,9 @@ class ProductCard extends StatelessWidget {
                             bottomLeft: Radius.circular(20),
                             bottomRight: Radius.circular(20))),
                     width: double.infinity,
-                    child: const Padding(
-                      padding: EdgeInsets.only(top: 0, bottom: 0, left: 10),
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(top: 0, bottom: 0, left: 10),
                       child: Expanded(
                         child: Row(
                           children: [
@@ -77,17 +80,21 @@ class ProductCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Caramel', //first name
-                                  style: TextStyle(
+                                  product.name, //first name
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
                                   ),
                                 ),
-                                Text(
-                                  'Machiato', //second name
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "dis"
+                                    " ${product.discount} %", //second name
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.red),
                                   ),
                                 ),
                               ],
@@ -106,19 +113,19 @@ class ProductCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Column(
+                          Column(
                             children: [
                               Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     '\$',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.red),
                                   ),
                                   Text(
-                                    '4.0',
-                                    style: TextStyle(
+                                    '${product.price}',
+                                    style: const TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   )
@@ -137,7 +144,10 @@ class ProductCard extends StatelessWidget {
                                       borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(20),
                                           bottomRight: Radius.circular(20))),
-                                  child: const Icon(Icons.add)),
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  )),
                             ],
                           )
                           // CupertinoButton(child: , onPressed: onPressed)

@@ -1,4 +1,5 @@
 // import 'package:final_project_vscode/widget/prod_card.dart';
+import 'package:final_project_vscode/models/product_model.dart';
 import 'package:final_project_vscode/widget/product_card.dart';
 // import 'package:final_project_vscode/widget/product_card.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +26,6 @@ class _MenuState extends State<Menu> {
               borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(25),
             bottomRight: Radius.circular(25),
-            // topLeft: Radius.circular(25),
-            // topRight: Radius.circular(25)
           )),
           actions: [
             badges.Badge(
@@ -38,21 +37,12 @@ class _MenuState extends State<Menu> {
                 '2',
                 style: TextStyle(color: Colors.red, fontSize: 15),
               ),
-              // badgeAnimation: badges.BadgeAnimation.rotation(
-              //   animationDuration: Duration(seconds: 1),
-              //   colorChangeAnimationDuration: Duration(seconds: 1),
-              //   loopAnimation: false,
-              //   curve: Curves.fastOutSlowIn,
-              //   colorChangeAnimationCurve: Curves.easeInCubic,
-              // ),
               badgeStyle: badges.BadgeStyle(
                 shape: badges.BadgeShape.circle,
                 badgeColor: Colors.blue,
                 padding: const EdgeInsets.all(5),
                 borderRadius: BorderRadius.circular(4),
                 borderSide: const BorderSide(color: Colors.white, width: 1),
-                // borderGradient: const badges.BadgeGradient.linear(
-                //     colors: [Colors.red, Colors.black]),
                 badgeGradient: const badges.BadgeGradient.linear(
                   colors: [Colors.white, Colors.white],
                   begin: Alignment.topCenter,
@@ -96,15 +86,14 @@ class _MenuState extends State<Menu> {
             // crossAxisSpacing: 2,
             crossAxisCount: 2,
             childAspectRatio: 10 / 14,
-            children: List.generate(7, (index) => const ProductCard()),
+            children: List.generate(
+                products.length,
+                (index) => ProductCard(
+                      product: products[index],
+                    )),
           ))
         ],
       ),
-      // bottomNavigationBar: BottomNavigationBar(items: const [
-      //   BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-      //   BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorite'),
-      //   BottomNavigationBarItem(icon: Icon(Icons.search), label: 'search')
-      // ]),
     );
   }
 }

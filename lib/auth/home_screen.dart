@@ -1,29 +1,22 @@
 import 'package:badges/badges.dart' as badges;
+import 'package:final_project_vscode/auth/widget/build_card.dart';
+import 'package:final_project_vscode/auth/widget/list_items.dart';
+import 'package:final_project_vscode/models/product_model.dart';
 // import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 // import 'package:final_project_vscode/auth/menu.dart';
 // import 'package:final_project_vscode/widget/product_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // int Index = 0;
-  // final Ithems = [
-  //   Icon(
-  //     Icons.home,
-  //     color: Colors.white,
-  //   ),
-  //   Icon(Icons.menu, color: Colors.white),
-  //   Icon(Icons.favorite_outline, color: Colors.white),
-  //   Icon(Icons.search, color: Colors.white)
-  // ];
-  // final screens = [HomeScreen(), Menu()];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +106,12 @@ class _HomeScreenState extends State<HomeScreen> {
               color: const Color.fromARGB(255, 218, 217, 217),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(children: List.generate(7, (index) => buildCard())),
+                child: Row(
+                    children: List.generate(
+                        products.length,
+                        (index) => BuildCard(
+                              product: products[index],
+                            ))),
               ),
             ),
             const Padding(
@@ -131,159 +129,147 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisCount: 1,
               scrollDirection: Axis.vertical,
               childAspectRatio: 19 / 5,
-              children: List.generate(10, (index) => listItem()),
+              children: List.generate(products.length, (index) => ListItems(product: products[index],)),
             ))
             // listItem()
           ],
         ),
       ),
-      // bottomNavigationBar: CurvedNavigationBar(
-      //   animationDuration: Duration(milliseconds: 300),
-
-      //   onTap: (index) => setState(() => this.Index = index),
-      //   backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-      //   color: const Color.fromARGB(255, 27, 44, 73),
-      //   height: 60,
-      //   index: Index,
-
-      //   // items: [Icon(Icons.home), Icon(Icons.menu), Icon(Icons.favorite)]
-      //   items: Ithems,
-      // ),
     );
   }
 
-  Widget buildCard() {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Container(
-        height: 150,
-        width: 100,
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(20)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Container(
-                height: 80,
-                width: 90,
-                decoration: BoxDecoration(
-                    // color: Colors.red,
-                    borderRadius: BorderRadius.circular(20),
-                    image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            'https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee.webp'))),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Column(
-                    children: [Text('data'), Text('1'), Text('data')],
-                  ),
-                ),
-                Column(
-                  // crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Container(
-                        width: 50,
-                        height: 38,
-                        // color: Colors.grey,
-                        decoration: const BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20))),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        )),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget buildCard() {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(4.0),
+  //     child: Container(
+  //       height: 150,
+  //       width: 100,
+  //       decoration: BoxDecoration(
+  //           color: Colors.white, borderRadius: BorderRadius.circular(20)),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Padding(
+  //             padding: const EdgeInsets.all(4.0),
+  //             child: Container(
+  //               height: 80,
+  //               width: 90,
+  //               decoration: BoxDecoration(
+  //                   // color: Colors.red,
+  //                   borderRadius: BorderRadius.circular(20),
+  //                   image: const DecorationImage(
+  //                       fit: BoxFit.cover,
+  //                       image: NetworkImage(
+  //                           'https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee.webp'))),
+  //             ),
+  //           ),
+  //           Row(
+  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //             children: [
+  //               const Padding(
+  //                 padding: EdgeInsets.only(left: 10),
+  //                 child: Column(
+  //                   children: [Text('data'), Text('1'), Text('data')],
+  //                 ),
+  //               ),
+  //               Column(
+  //                 // crossAxisAlignment: CrossAxisAlignment.end,
+  //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                 children: [
+  //                   const SizedBox(
+  //                     height: 24,
+  //                   ),
+  //                   Container(
+  //                       width: 50,
+  //                       height: 38,
+  //                       // color: Colors.grey,
+  //                       decoration: const BoxDecoration(
+  //                           color: Colors.red,
+  //                           borderRadius: BorderRadius.only(
+  //                               topLeft: Radius.circular(20),
+  //                               bottomRight: Radius.circular(20))),
+  //                       child: const Icon(
+  //                         Icons.add,
+  //                         color: Colors.white,
+  //                       )),
+  //                 ],
+  //               ),
+  //             ],
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget listItem() {
-    return Card(
-      elevation: 1,
-      child: Container(
-        height: 100,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 255, 253, 253),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        // color: Colors.green,
-                        borderRadius: BorderRadius.circular(20),
-                        image: const DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                'https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee.webp'))),
-                  ),
-                )),
-            Expanded(
-                flex: 3,
-                child: Container(
-                  decoration: BoxDecoration(
-                      // color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Column(
-                    children: [
-                      ListTile(
-                        title: Text('Caramel Ma'),
-                        subtitle: Text('la'),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0, bottom: 0, left: 15),
-                        child: Row(
-                          children: [Text('A'), Text('t')],
-                        ),
-                      )
-                    ],
-                  ),
-                )),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                    width: 50,
-                    height: 38,
-                    // color: Colors.grey,
-                    decoration: const BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(4),
-                            bottomRight: Radius.circular(4))),
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    )),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget listItem() {
+  //   return Card(
+  //     elevation: 1,
+  //     child: Container(
+  //       height: 100,
+  //       width: double.infinity,
+  //       decoration: BoxDecoration(
+  //         color: const Color.fromARGB(255, 255, 253, 253),
+  //         borderRadius: BorderRadius.circular(20),
+  //       ),
+  //       child: Row(
+  //         children: [
+  //           Expanded(
+  //               flex: 1,
+  //               child: Padding(
+  //                 padding: const EdgeInsets.all(2.0),
+  //                 child: Container(
+  //                   decoration: BoxDecoration(
+  //                       // color: Colors.green,
+  //                       borderRadius: BorderRadius.circular(20),
+  //                       image: const DecorationImage(
+  //                           fit: BoxFit.cover,
+  //                           image: NetworkImage(
+  //                               'https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee.webp'))),
+  //                 ),
+  //               )),
+  //           Expanded(
+  //               flex: 3,
+  //               child: Container(
+  //                 decoration: BoxDecoration(
+  //                     // color: Colors.grey,
+  //                     borderRadius: BorderRadius.circular(10)),
+  //                 child: const Column(
+  //                   children: [
+  //                     ListTile(
+  //                       title: Text('Caramel Ma'),
+  //                       subtitle: Text('la'),
+  //                     ),
+  //                     Padding(
+  //                       padding: EdgeInsets.only(top: 0, bottom: 0, left: 15),
+  //                       child: Row(
+  //                         children: [Text('A'), Text('t')],
+  //                       ),
+  //                     )
+  //                   ],
+  //                 ),
+  //               )),
+  //           Column(
+  //             mainAxisAlignment: MainAxisAlignment.end,
+  //             children: [
+  //               Container(
+  //                   width: 50,
+  //                   height: 38,
+  //                   // color: Colors.grey,
+  //                   decoration: const BoxDecoration(
+  //                       color: Colors.red,
+  //                       borderRadius: BorderRadius.only(
+  //                           topLeft: Radius.circular(4),
+  //                           bottomRight: Radius.circular(4))),
+  //                   child: const Icon(
+  //                     Icons.add,
+  //                     color: Colors.white,
+  //                   )),
+  //             ],
+  //           )
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }
