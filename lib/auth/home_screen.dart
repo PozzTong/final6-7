@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: 160,
               width: double.infinity,
-              color: Color.fromARGB(255, 218, 217, 217),
+              color: const Color.fromARGB(255, 218, 217, 217),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(children: List.generate(7, (index) => buildCard())),

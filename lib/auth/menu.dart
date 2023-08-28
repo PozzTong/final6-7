@@ -2,6 +2,7 @@
 import 'package:final_project_vscode/widget/product_card.dart';
 // import 'package:final_project_vscode/widget/product_card.dart';
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart' as badges;
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -27,6 +28,44 @@ class _MenuState extends State<Menu> {
             // topLeft: Radius.circular(25),
             // topRight: Radius.circular(25)
           )),
+          actions: [
+            badges.Badge(
+              position: badges.BadgePosition.topEnd(top: -10, end: -12),
+              showBadge: true,
+              ignorePointer: false,
+              onTap: () {},
+              badgeContent: const Text(
+                '2',
+                style: TextStyle(color: Colors.red, fontSize: 15),
+              ),
+              // badgeAnimation: badges.BadgeAnimation.rotation(
+              //   animationDuration: Duration(seconds: 1),
+              //   colorChangeAnimationDuration: Duration(seconds: 1),
+              //   loopAnimation: false,
+              //   curve: Curves.fastOutSlowIn,
+              //   colorChangeAnimationCurve: Curves.easeInCubic,
+              // ),
+              badgeStyle: badges.BadgeStyle(
+                shape: badges.BadgeShape.circle,
+                badgeColor: Colors.blue,
+                padding: const EdgeInsets.all(5),
+                borderRadius: BorderRadius.circular(4),
+                borderSide: const BorderSide(color: Colors.white, width: 1),
+                // borderGradient: const badges.BadgeGradient.linear(
+                //     colors: [Colors.red, Colors.black]),
+                badgeGradient: const badges.BadgeGradient.linear(
+                  colors: [Colors.white, Colors.white],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                elevation: 0,
+              ),
+              child: const Icon(
+                Icons.shopping_cart,
+                size: 30,
+              ),
+            ),
+          ],
         ),
       ),
       body: Column(
