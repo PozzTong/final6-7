@@ -14,43 +14,65 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-            image: DecorationImage(image: NetworkImage(''), fit: BoxFit.cover)),
-        child: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: const Color.fromARGB(255, 27, 44, 73),
+      body: SafeArea(
+        child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(4.0),
-              child: Text(
-                'Welcome to',
-                style: TextStyle(fontSize: 30, color: Colors.white),
+            Expanded(
+                flex: 1,
+                child: Container(
+                  height: 150,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              'https://clipart-library.com/images/piqKxjE5T.png'),
+                          fit: BoxFit.cover)),
+                )),
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Text(
+                        'Welcome to',
+                        style: TextStyle(fontSize: 30, color: Colors.white),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Text(
+                        'Theam Cafe',
+                        style: TextStyle(fontSize: 50, color: Colors.redAccent),
+                      ),
+                    ),
+                    CupertinoButton(
+                      color: Colors.redAccent,
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
+                          topLeft: Radius.circular(25),
+                          topRight: Radius.circular(25)),
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignIn(),
+                            ),
+                            (route) => false);
+                      },
+                      child: const Text('GetStart'),
+                    )
+                  ],
+                ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(4.0),
-              child: Text(
-                'Theam Cafe',
-                style: TextStyle(fontSize: 50, color: Colors.redAccent),
-              ),
-            ),
-            CupertinoButton(
-              color: Colors.grey,
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignIn(),
-                    ));
-              },
-              child: const Text('GetStart'),
-            )
           ],
-        )),
+        ),
       ),
     );
   }

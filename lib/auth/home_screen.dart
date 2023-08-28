@@ -1,122 +1,155 @@
 import 'package:badges/badges.dart' as badges;
+// import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+// import 'package:final_project_vscode/auth/menu.dart';
 // import 'package:final_project_vscode/widget/product_card.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // int Index = 0;
+  // final Ithems = [
+  //   Icon(
+  //     Icons.home,
+  //     color: Colors.white,
+  //   ),
+  //   Icon(Icons.menu, color: Colors.white),
+  //   Icon(Icons.favorite_outline, color: Colors.white),
+  //   Icon(Icons.search, color: Colors.white)
+  // ];
+  // final screens = [HomeScreen(), Menu()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(90.0),
-          child: AppBar(
-            title: const Column(
-              children: [
-                Text(
-                  'Cavosh',
-                  style: TextStyle(fontSize: 25, color: Colors.red),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Good Morning, User',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                    // Text('Cavosh Cafe Legicka 20, Wroctaw')
-                  ],
-                ),
-              ],
-            ),
-            backgroundColor: const Color.fromARGB(255, 27, 44, 73),
-            elevation: 25,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(25),
-              bottomRight: Radius.circular(25),
-            )),
-            actions: [
-              badges.Badge(
-                position: badges.BadgePosition.topEnd(top: -10, end: -12),
-                showBadge: true,
-                ignorePointer: false,
-                onTap: () {},
-                badgeContent: const Text(
-                  '2',
-                  style: TextStyle(color: Colors.red, fontSize: 15),
-                ),
-                // badgeAnimation: badges.BadgeAnimation.rotation(
-                //   animationDuration: Duration(seconds: 1),
-                //   colorChangeAnimationDuration: Duration(seconds: 1),
-                //   loopAnimation: false,
-                //   curve: Curves.fastOutSlowIn,
-                //   colorChangeAnimationCurve: Curves.easeInCubic,
-                // ),
-                badgeStyle: badges.BadgeStyle(
-                  shape: badges.BadgeShape.circle,
-                  badgeColor: Colors.blue,
-                  padding: const EdgeInsets.all(5),
-                  borderRadius: BorderRadius.circular(4),
-                  borderSide: const BorderSide(color: Colors.white, width: 1),
-                  // borderGradient: const badges.BadgeGradient.linear(
-                  //     colors: [Colors.red, Colors.black]),
-                  badgeGradient: const badges.BadgeGradient.linear(
-                    colors: [Colors.white, Colors.white],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  elevation: 0,
-                ),
-                child: const Icon(
-                  Icons.shopping_cart,
-                  size: 30,
-                ),
-              ),
-            ],
-          ),
-        ),
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      // extendBody: true,
+      // backgroundColor: Colors.red,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(90.0),
+        child: AppBar(
+          title: const Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'New In',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
+              Text(
+                'Cavosh',
+                style: TextStyle(fontSize: 25, color: Colors.red),
               ),
-              Container(
-                height: 160,
-                width: double.infinity,
-                color: Color.fromARGB(255, 218, 217, 217),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child:
-                      Row(children: List.generate(7, (index) => buildCard())),
-                ),
+              Row(
+                children: [
+                  Text(
+                    'Good Morning, User',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  // Text('Cavosh Cafe Legicka 20, Wroctaw')
+                ],
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'Frequentely Ordered',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Expanded(
-                  child: GridView.count(
-                // mainAxisSpacing: 2,
-                // crossAxisSpacing: 2,
-
-                crossAxisCount: 1,
-                scrollDirection: Axis.vertical,
-                childAspectRatio: 19 / 5,
-                children: List.generate(10, (index) => listItem()),
-              ))
-              // listItem()
             ],
           ),
-        ));
+          backgroundColor: const Color.fromARGB(255, 27, 44, 73),
+          elevation: 25,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          )),
+          actions: [
+            badges.Badge(
+              position: badges.BadgePosition.topEnd(top: -10, end: -12),
+              showBadge: true,
+              ignorePointer: false,
+              onTap: () {},
+              badgeContent: const Text(
+                '2',
+                style: TextStyle(color: Colors.red, fontSize: 15),
+              ),
+              // badgeAnimation: badges.BadgeAnimation.rotation(
+              //   animationDuration: Duration(seconds: 1),
+              //   colorChangeAnimationDuration: Duration(seconds: 1),
+              //   loopAnimation: false,
+              //   curve: Curves.fastOutSlowIn,
+              //   colorChangeAnimationCurve: Curves.easeInCubic,
+              // ),
+              badgeStyle: badges.BadgeStyle(
+                shape: badges.BadgeShape.circle,
+                badgeColor: Colors.blue,
+                padding: const EdgeInsets.all(5),
+                borderRadius: BorderRadius.circular(4),
+                borderSide: const BorderSide(color: Colors.white, width: 1),
+                // borderGradient: const badges.BadgeGradient.linear(
+                //     colors: [Colors.red, Colors.black]),
+                badgeGradient: const badges.BadgeGradient.linear(
+                  colors: [Colors.white, Colors.white],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                elevation: 0,
+              ),
+              child: const Icon(
+                Icons.shopping_cart,
+                size: 30,
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'New In',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              height: 160,
+              width: double.infinity,
+              color: Color.fromARGB(255, 218, 217, 217),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(children: List.generate(7, (index) => buildCard())),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Frequentely Ordered',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Expanded(
+                child: GridView.count(
+              // mainAxisSpacing: 2,
+              // crossAxisSpacing: 2,
+
+              crossAxisCount: 1,
+              scrollDirection: Axis.vertical,
+              childAspectRatio: 19 / 5,
+              children: List.generate(10, (index) => listItem()),
+            ))
+            // listItem()
+          ],
+        ),
+      ),
+      // bottomNavigationBar: CurvedNavigationBar(
+      //   animationDuration: Duration(milliseconds: 300),
+
+      //   onTap: (index) => setState(() => this.Index = index),
+      //   backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+      //   color: const Color.fromARGB(255, 27, 44, 73),
+      //   height: 60,
+      //   index: Index,
+
+      //   // items: [Icon(Icons.home), Icon(Icons.menu), Icon(Icons.favorite)]
+      //   items: Ithems,
+      // ),
+    );
   }
 
   Widget buildCard() {
@@ -126,7 +159,7 @@ class HomeScreen extends StatelessWidget {
         height: 150,
         width: 100,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(15)),
+            color: Colors.white, borderRadius: BorderRadius.circular(20)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -190,7 +223,7 @@ class HomeScreen extends StatelessWidget {
         height: 100,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 255, 253, 253),
+          color: const Color.fromARGB(255, 255, 253, 253),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -201,7 +234,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(2.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.green,
+                        // color: Colors.green,
                         borderRadius: BorderRadius.circular(20),
                         image: const DecorationImage(
                             fit: BoxFit.cover,
@@ -240,8 +273,8 @@ class HomeScreen extends StatelessWidget {
                     decoration: const BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20))),
+                            topLeft: Radius.circular(4),
+                            bottomRight: Radius.circular(4))),
                     child: const Icon(
                       Icons.add,
                       color: Colors.white,
