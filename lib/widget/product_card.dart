@@ -1,6 +1,7 @@
 // import 'dart:math';
 
 // import 'package:flutter/cupertino.dart';
+import 'package:final_project_vscode/auth/detail_product.dart';
 import 'package:final_project_vscode/models/product_model.dart';
 import 'package:flutter/material.dart';
 
@@ -144,9 +145,19 @@ class ProductCard extends StatelessWidget {
                                       borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(20),
                                           bottomRight: Radius.circular(20))),
-                                  child: const Icon(
-                                    Icons.add,
-                                    color: Colors.white,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                DetailProduct(product: product),
+                                          ));
+                                    },
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
                                   )),
                             ],
                           )

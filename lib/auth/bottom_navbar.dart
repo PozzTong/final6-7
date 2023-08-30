@@ -13,20 +13,20 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int index = 0;
   final ithems = [
-    Icon(
+    const Icon(
       Icons.home,
       color: Colors.white,
     ),
-    Icon(Icons.menu, color: Colors.white),
-    Icon(Icons.favorite_outline, color: Colors.white),
+    const Icon(Icons.menu, color: Colors.white),
+    const Icon(Icons.favorite_outline, color: Colors.white),
   ];
-  final screens = [HomeScreen(), Menu(), HomeScreen()];
+  final screens = [const HomeScreen(), const Menu(), const HomeScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[index],
       bottomNavigationBar: CurvedNavigationBar(
-        animationDuration: Duration(milliseconds: 300),
+        animationDuration: const Duration(milliseconds: 300),
 
         onTap: (index) => setState(() => this.index = index),
         // buttonBackgroundColor: Colors.red,

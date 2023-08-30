@@ -1,3 +1,4 @@
+import 'package:final_project_vscode/auth/detail_product.dart';
 import 'package:final_project_vscode/models/product_model.dart';
 // import 'package:final_project_vscode/widget/product_card.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class BuildCard extends StatelessWidget {
                   height: 80,
                   width: 90,
                   decoration: BoxDecoration(
-                      // color: Colors.red,
+                      color: Colors.red,
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
                           fit: BoxFit.cover,
@@ -79,18 +80,26 @@ class BuildCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            width: 45,
-                            height: 32,
-                            decoration: const BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    bottomRight: Radius.circular(20))),
-                            child: const Icon(
-                              Icons.add,
-                              color: Colors.white,
-                            ),
-                          )
+                              width: 45,
+                              height: 32,
+                              decoration: const BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      bottomRight: Radius.circular(20))),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailProduct(product: product),
+                                      ));
+                                },
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                              ))
                         ],
                       )
                     ],

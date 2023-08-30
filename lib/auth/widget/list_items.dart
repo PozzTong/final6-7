@@ -1,3 +1,4 @@
+import 'package:final_project_vscode/auth/detail_product.dart';
 import 'package:final_project_vscode/models/product_model.dart';
 import 'package:flutter/material.dart';
 
@@ -8,12 +9,12 @@ class ListItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 1,
+      elevation: 0,
       child: Container(
         height: 100,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 255, 253, 253),
+          color: const Color.fromARGB(255, 221, 220, 220),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -21,10 +22,10 @@ class ListItems extends StatelessWidget {
             Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: const EdgeInsets.all(2.0),
+                  padding: const EdgeInsets.all(3.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        // color: Colors.green,
+                        color: Colors.green,
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
                             fit: BoxFit.cover,
@@ -40,14 +41,18 @@ class ListItems extends StatelessWidget {
                   child: Column(
                     children: [
                       ListTile(
-                        title: Text(product.name),
+                        title: Text(
+                          product.name,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         subtitle: Text("dis" " ${product.discount} %"),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 0, bottom: 0, left: 15),
+                        padding:
+                            const EdgeInsets.only(top: 0, bottom: 0, left: 15),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               '\$ ',
                               style: TextStyle(
                                   color: Colors.red,
@@ -56,7 +61,7 @@ class ListItems extends StatelessWidget {
                             ),
                             Text(
                               '${product.price}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             )
                           ],
@@ -75,11 +80,20 @@ class ListItems extends StatelessWidget {
                     decoration: const BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(4),
-                            bottomRight: Radius.circular(4))),
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.white,
+                            topLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20))),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>  DetailProduct(product: product,),
+                            ));
+                      },
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
                     )),
               ],
             )
