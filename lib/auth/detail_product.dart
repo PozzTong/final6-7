@@ -37,7 +37,7 @@ class _DetailProductState extends State<DetailProduct> {
                   InkWell(
                     onTap: () => Navigator.of(context).pop(),
                     child: const Icon(
-                      Icons.arrow_back,
+                      Icons.arrow_back_ios,
                       color: Colors.white,
                       size: 35,
                     ),
@@ -99,7 +99,7 @@ class _DetailProductState extends State<DetailProduct> {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,16 +116,60 @@ class _DetailProductState extends State<DetailProduct> {
                               style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
-                            
                           ],
                         ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4, bottom: 4),
+                      child: TextField(
+                        maxLines: 3,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              gapPadding: 4,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            hintText: 'Write a note...'),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 80,
+                    ),
+                    Row(
+                      children: [
+                        const Expanded(
+                            flex: 1,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [Text('Total Price'), Text('\$')],
+                            )),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 27, 44, 73),
+                                borderRadius: BorderRadius.circular(15)),
+                            child:  Center(
+                                child: InkWell(
+                                  onTap: (){},
+                              child: const Text(
+                                'Add to Card',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            )),
+                          ),
+                        )
                       ],
                     )
                   ],
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
