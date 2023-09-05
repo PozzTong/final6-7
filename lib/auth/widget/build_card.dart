@@ -1,11 +1,41 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project_vscode/auth/detail_product.dart';
 import 'package:final_project_vscode/models/product_model.dart';
 // import 'package:final_project_vscode/widget/product_card.dart';
 import 'package:flutter/material.dart';
 
-class BuildCard extends StatelessWidget {
+class BuildCard extends StatefulWidget {
   BuildCard({super.key, required this.product});
   ProductModel product;
+
+  @override
+  State<BuildCard> createState() => _BuildCardState();
+}
+
+class _BuildCardState extends State<BuildCard> {
+  List<String> docIds = [];
+
+  getDocId() async {
+    await FirebaseFirestore.instance.collection('promodel').get().then((value) {
+      value.docs.forEach((element) {
+        setState(() {
+          docIds.add(element.reference.id);
+          print(element.reference.id);
+        });
+      });
+    });
+  }
+
+  CollectionReference usersdata =
+      FirebaseFirestore.instance.collection('promodel');
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getDocId();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +59,7 @@ class BuildCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: NetworkImage(product.image))),
+                          image: NetworkImage(widget.product.image))),
                 ),
               ),
             ),
@@ -41,7 +71,7 @@ class BuildCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      product.name,
+                      widget.product.name,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
@@ -68,7 +98,7 @@ class BuildCard extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15),
                               ),
-                              Text('${product.price}',
+                              Text('${widget.product.price}',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16))
@@ -92,7 +122,8 @@ class BuildCard extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => DetailProduct(product: product),
+                                        builder: (context) => DetailProduct(
+                                            product: widget.product),
                                       ));
                                 },
                                 child: const Icon(

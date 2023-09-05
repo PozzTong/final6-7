@@ -82,7 +82,7 @@ class _SignInState extends State<SignIn> {
                       style: TextStyle(color: Colors.blueAccent),
                     )),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {Get.to(()=> BottomNavBar());},
                     child: const Text(
                       'Forgot Password ?',
                       style: TextStyle(color: Colors.red),
@@ -104,7 +104,7 @@ class _SignInState extends State<SignIn> {
                             email: emailController.text,
                             password: passwordController.text);
                     if (credential != null) {
-                      Get.to(() => const SignUp());
+                      Get.to(() => const BottomNavBar());
                     }
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
