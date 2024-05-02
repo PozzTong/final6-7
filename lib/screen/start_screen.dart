@@ -2,7 +2,6 @@ import 'package:final_project_vscode/screen/sign_in_screen.dart';
 // import 'package:final_project_vscode/screen/sing_up_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
