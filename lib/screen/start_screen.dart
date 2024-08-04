@@ -64,6 +64,7 @@ class _StartScreenState extends State<StartScreen> {
                               builder: (context) => const SignIn(),
                             ),
                             (route) => false);
+                        // Get.to(()=>const SignIn());
                       },
                       child: const Text('GetStart'),
                     )

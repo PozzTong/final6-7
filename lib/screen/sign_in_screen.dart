@@ -1,10 +1,12 @@
 import 'package:final_project_vscode/auth/bottom_navbar.dart';
 import 'package:final_project_vscode/screen/sing_up_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:final_project_vscode/auth/home_screen.dart';
 // import 'package:final_project_vscode/auth/menu.dart';
 // import 'package:final_project_vscode/screen/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -14,6 +16,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +45,7 @@ class _SignInState extends State<SignIn> {
               padding: const EdgeInsets.all(8.0),
               // top: MediaQuery.of(context).size.height, right: 35, left: 35),
               child: TextFormField(
+                  controller: emailController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.only(
@@ -54,6 +59,7 @@ class _SignInState extends State<SignIn> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
+                  controller: passwordController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.only(
@@ -69,19 +75,14 @@ class _SignInState extends State<SignIn> {
               children: [
                 TextButton(
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignUp(),
-                          ),
-                          (route) => false);
+                      Get.to(() => const SignUp());
                     },
                     child: const Text(
                       "Create New Account",
                       style: TextStyle(color: Colors.blueAccent),
                     )),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {Get.to(()=> const BottomNavBar());},
                     child: const Text(
                       'Forgot Password ?',
                       style: TextStyle(color: Colors.red),
@@ -96,13 +97,22 @@ class _SignInState extends State<SignIn> {
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25)),
                 child: const Text('Sign In'),
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const BottomNavBar(),
-                      ),
-                      (route) => false);
+                onPressed: () async {
+                  try {
+                    final credential = await FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: emailController.text,
+                            password: passwordController.text);
+                    if (credential != null) {
+                      Get.to(() => const BottomNavBar());
+                    }
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'user-not-found') {
+                      print('No user found for that email.');
+                    } else if (e.code == 'wrong-password') {
+                      print('Wrong password provided for that user.');
+                    }
+                  }
                 })
           ],
         ),

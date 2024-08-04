@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart' as badges;
-import 'package:final_project_vscode/auth/detail_product.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:final_project_vscode/auth/detail_product.dart';
 import 'package:final_project_vscode/auth/widget/build_card.dart';
 import 'package:final_project_vscode/auth/widget/list_items.dart';
 import 'package:final_project_vscode/models/product_model.dart';
@@ -18,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
