@@ -1,8 +1,7 @@
-
-
 import 'package:final_project_vscode/models/product_model.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class DetailProduct extends StatefulWidget {
   DetailProduct({super.key, required this.product});
   ProductModel product;
@@ -150,9 +149,9 @@ class _DetailProductState extends State<DetailProduct> {
                             decoration: BoxDecoration(
                                 color: const Color.fromARGB(255, 27, 44, 73),
                                 borderRadius: BorderRadius.circular(15)),
-                            child:  Center(
+                            child: Center(
                                 child: InkWell(
-                                  onTap: (){},
+                              onTap: () {},
                               child: const Text(
                                 'Add to Card',
                                 style: TextStyle(

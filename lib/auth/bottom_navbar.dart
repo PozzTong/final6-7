@@ -19,11 +19,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ),
     const Icon(Icons.menu, color: Colors.white),
     const Icon(Icons.favorite_outline, color: Colors.white),
+    const Icon(Icons.favorite_outline, color: Colors.white),
   ];
-  final screens = [const HomeScreen(), const Menu(), const HomeScreen()];
+  final screens = [
+    const HomeScreen(),
+    const Menu(),
+    const HomeScreen(),
+    const Menu(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: screens[index],
       bottomNavigationBar: CurvedNavigationBar(
         animationDuration: const Duration(milliseconds: 300),
@@ -31,6 +38,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         onTap: (index) => setState(() => this.index = index),
         // buttonBackgroundColor: Colors.red,
         backgroundColor: Colors.transparent,
+        
         color: const Color.fromARGB(255, 27, 44, 73),
         height: 60,
         index: index,

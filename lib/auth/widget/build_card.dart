@@ -4,6 +4,7 @@ import 'package:final_project_vscode/models/product_model.dart';
 // import 'package:final_project_vscode/widget/product_card.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class BuildCard extends StatefulWidget {
   BuildCard({super.key, required this.product});
   ProductModel product;
@@ -20,7 +21,6 @@ class _BuildCardState extends State<BuildCard> {
       value.docs.forEach((element) {
         setState(() {
           docIds.add(element.reference.id);
-          print(element.reference.id);
         });
       });
     });
@@ -31,7 +31,7 @@ class _BuildCardState extends State<BuildCard> {
 
   @override
   void initState() {
-    // TODO: implement initState
+  
     super.initState();
     getDocId();
   }
@@ -41,7 +41,7 @@ class _BuildCardState extends State<BuildCard> {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: Container(
-        height: 400,
+        height: 200,
         width: 100,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(20)),
@@ -72,7 +72,7 @@ class _BuildCardState extends State<BuildCard> {
                   children: [
                     Text(
                       widget.product.name,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.w500,fontSize: 10),
                     )
                   ],
                 ),
@@ -81,58 +81,51 @@ class _BuildCardState extends State<BuildCard> {
             Expanded(
                 child: Column(
               children: [
+                Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
+                      Row(
                         children: [
-                          Row(
-                            children: [
-                              const Text(
-                                '\$ ',
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
-                              Text('${widget.product.price}',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16))
-                            ],
-                          )
+                          const Text(
+                            '\$ ',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
+                          ),
+                          Text('${widget.product.price}',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16))
                         ],
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                              width: 45,
-                              height: 32,
-                              decoration: const BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => DetailProduct(
-                                            product: widget.product),
-                                      ));
-                                },
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ))
-                        ],
-                      )
+                     
+                      Container(
+                          width: 45,
+                          height: 32,
+                          decoration: const BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20))),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailProduct(
+                                        product: widget.product),
+                                  ));
+                            },
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                          ))
                     ],
                   ),
                 )

@@ -1,12 +1,9 @@
 import 'package:badges/badges.dart' as badges;
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:final_project_vscode/auth/detail_product.dart';
+
 import 'package:final_project_vscode/auth/widget/build_card.dart';
 import 'package:final_project_vscode/auth/widget/list_items.dart';
 import 'package:final_project_vscode/models/product_model.dart';
-// import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-// import 'package:final_project_vscode/auth/menu.dart';
-// import 'package:final_project_vscode/widget/product_card.dart';
+
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,12 +16,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBody: true,
-      // backgroundColor: Colors.red,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(90.0),
         child: AppBar(
@@ -40,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     'Good Morning, User',
                     style: TextStyle(fontSize: 15),
                   ),
-                  // Text('Cavosh Cafe Legicka 20, Wroctaw')
                 ],
               ),
             ],
@@ -68,8 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(5),
                 borderRadius: BorderRadius.circular(4),
                 borderSide: const BorderSide(color: Colors.white, width: 1),
-                // borderGradient: const badges.BadgeGradient.linear(
-                //     colors: [Colors.red, Colors.black]),
                 badgeGradient: const badges.BadgeGradient.linear(
                   colors: [Colors.white, Colors.white],
                   begin: Alignment.topCenter,
@@ -86,7 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: InkWell(
-        
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                height: 160,
+                height: 170,
                 width: double.infinity,
                 color: const Color.fromARGB(255, 218, 217, 217),
                 child: SingleChildScrollView(
@@ -121,8 +111,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Expanded(
                   child: GridView.count(
-                // mainAxisSpacing: 2,
-                // crossAxisSpacing: 2,
                 crossAxisCount: 1,
                 scrollDirection: Axis.vertical,
                 childAspectRatio: 19 / 5,
@@ -132,7 +120,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           product: products[index],
                         )),
               ))
-              // listItem()
             ],
           ),
         ),
